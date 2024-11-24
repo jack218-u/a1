@@ -33,7 +33,8 @@ func main() {
 	//开始循环读取fileName的内容
 	for {
 		str, err := reader.ReadString('\n') //每次只读一行读到\n结束,然后循环读下一行
-		if err == io.EOF {                  //读到文件末尾退出
+		//此代码没有统计最后一行,因为最后一行没有换行符
+		if err == io.EOF { //读到文件末尾退出
 			break
 		}
 		//遍历str,进行统计
@@ -48,7 +49,7 @@ func main() {
 			case v >= '0' && v <= '9':
 				count.NumCount++
 			default:
-				count.OtherCount++
+				count.OtherCount++ //如果有换行每行末尾有一个\r\n,算两个字符,如果不换行,就没有
 			}
 		}
 		fmt.Println(str)
