@@ -7,6 +7,7 @@ func main() {
 	// /*   */块注释，块注释里面不能再有块注释
 	// 规范的代码风格：尽量用行注释
 	// fmt.Println("hellogolang")
+
 	// fmt.Println("hellogolang")
 	/*
 				fmt.Println("hellogolang")
