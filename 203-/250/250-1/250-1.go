@@ -9,10 +9,11 @@ import (
 
 // 定义一个结构体用于保存统计的结果
 type CharCount struct {
-	ChCount    int //记录英文个数
-	NumCount   int //记录数字的个数
-	SpaceCount int //记录空格的个数
-	OtherCount int //记录其他字符的个数
+	ChCount      int //记录英文个数
+	NumCount     int //记录数字的个数
+	SpaceCount   int //记录空格的个数
+	OtherCount   int //记录其他字符的个数
+	ChineseCount int // 记录中文字符的个数
 }
 
 func main() {
@@ -45,6 +46,8 @@ func main() {
 					count.SpaceCount++
 				case v >= '0' && v <= '9':
 					count.NumCount++
+				case v >= '\u4e00' && v <= '\u9fff', v >= '\uff00' && v <= '\uffef':
+					count.ChineseCount++
 				default:
 					count.OtherCount++
 				}
@@ -62,6 +65,8 @@ func main() {
 				count.SpaceCount++
 			case v >= '0' && v <= '9':
 				count.NumCount++
+			case v >= '\u4e00' && v <= '\u9fff', v >= '\uff00' && v <= '\uffef':
+				count.ChineseCount++
 			default:
 				count.OtherCount++
 			}
@@ -69,6 +74,6 @@ func main() {
 		fmt.Println(str)
 	}
 	//输出统计结果看看是否正确
-	fmt.Printf("英文个数:%d\n数字个数:%d\n空格个数:%d\n其他字符个数:%d\n",
-		count.ChCount, count.NumCount, count.SpaceCount, count.OtherCount)
+	fmt.Printf("英文个数:%d\n数字个数:%d\n空格个数:%d\n其他字符个数:%d\n中文字符个数:%d\n",
+		count.ChCount, count.NumCount, count.SpaceCount, count.OtherCount, count.ChineseCount)
 }
