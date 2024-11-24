@@ -38,4 +38,7 @@ func main() {
 	sort.Sort(a)
 	fmt.Println("---排序后---")
 	fmt.Println(a)
+	var c int = 1
+	fmt.Println(c)
+
 }
