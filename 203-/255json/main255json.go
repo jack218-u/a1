@@ -22,7 +22,7 @@ import (
 
 // 定义一个结构体
 type Monster struct {
-	Name     string
+	Name     string `json:"monster_name"` //反射机制,将Name改成希望的格式
 	Age      int
 	Birthday string
 	Sal      float64
